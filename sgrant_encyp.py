@@ -1,6 +1,7 @@
 from platform import system
 from string import *
 from utils import *
+from array import *
 name = system()
 print(name)
 tters = [ascii_letters]
@@ -19,9 +20,21 @@ l = dict.fromkeys(le,1)
 l['~'] = -1
 
 le.append(m)
+f = {x: set() for x in le}
 
-k = input("Enter some words   ")
+k = [x for x in input("Enter some words   ")]
 m = ''
+s = list(k)
+for i in k:
+    q = 0
+    k = list(s)
+    v = k.count(i)
+    if not i.isspace():
+        for a in range(v):
+            f[i].add(k.index(i) + q)
+            del k[k.index(i)]
+            q += 1
+
 
 for i in k:
     if i.isspace(): 
